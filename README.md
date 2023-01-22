@@ -2,10 +2,10 @@
 
 > **Beta:** This role is in beta status.
 
-![🎭 Tests](https://github.com/arillso/ansible.restic/workflows/%F0%9F%8E%AD%20Tests/badge.svg)
+![🎭 Tests](https://github.com/kprestel/kprestel.restic/workflows/%F0%9F%8E%AD%20Tests/badge.svg)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-restic-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/restic)
-[![Ansible Role](https://img.shields.io/ansible/role/d/42773.svg?style=popout-square)](https://galaxy.ansible.com/arillso/restic)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-restic-blue.svg?style=popout-square)](https://galaxy.ansible.com/kprestel/restic)
+[![Ansible Role](https://img.shields.io/ansible/role/d/42773.svg?style=popout-square)](https://galaxy.ansible.com/kprestel/restic)
 
 ## Description
 
@@ -64,19 +64,19 @@ CRON=true /path/to/backup/script/backup-example.sh
 ## Installation
 
 ```bash
-ansible-galaxy install arillso.restic
+ansible-galaxy install kprestel.restic
 ```
 
 ## Requirements
 
 * bzip2
   
-  ## Role Variables
+## Role Variables
 
 | Name                            | Default                                                                                                            | Description                                                                 |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
 | `restic_url`                    | `undefined`                                                                                                        | The URL to download restic from. Use this variable to overwrite the default |
-| `restic_version`                | `'0.12.0'`                                                                                                         | The version of Restic to install                                            |
+| `restic_version`                | `'0.15.0'`                                                                                                         | The version of Restic to install                                            |
 | `restic_download_path`          | `'/opt/restic'`                                                                                                    | Download location for the restic binary                                     |
 | `restic_install_path`           | `'/usr/bin'`                                                                                                       | Install location for the restic binary                                      |
 | `restic_script_dir`             | `'~/restic'`                                                                                                       | Location of the generated backup scripts                                    |
@@ -96,7 +96,7 @@ to be able to use this role. A repository can be local or remote (see the
 official [documentation](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)).
 
 > **Using an SFTP repository**
-> 
+>
 > For using an SFTP backend, the user needs passwordless access to the host.
 > Please make sure to distribute ssh keys accordingly, as this is outside of
 > the scope of this role.
@@ -147,9 +147,9 @@ Available variables:
 | `keep_last`        | no                            | If set, only keeps the last n snapshots.                                                                                                                                     |
 | `keep_hourly`      | no                            | If set, only keeps the last n hourly snapshots.                                                                                                                              |
 | `keep_daily`       | no                            | If set, only keeps the last n daily snapshots.                                                                                                                               |
-| `keep_weekly `     | no                            | If set, only keeps the last n weekly snapshots.                                                                                                                              |
+| `keep_weekly`     | no                            | If set, only keeps the last n weekly snapshots.                                                                                                                              |
 | `keep_monthly`     | no                            | If set, only keeps the last n monthly snapshots.                                                                                                                             |
-| `keep_yearly `     | no                            | If set, only keeps the last n yearly snapshots.                                                                                                                              |
+| `keep_yearly`     | no                            | If set, only keeps the last n yearly snapshots.                                                                                                                              |
 | `keep_within`      | no                            | If set, only keeps snapshots in this time period.                                                                                                                            |
 | `keep_tag`         | no                            | If set, keep snapshots with this tags. Make sure to specify a list.                                                                                                          |
 | `prune`            | no (`false`)                  | If `true`, the `restic forget` command in the script has the [`--prune` option](https://restic.readthedocs.io/en/stable/060_forget.html#removing-backup-snapshots) appended. |
@@ -224,15 +224,6 @@ none
         keep_last: 4
         keep_tag: deployment
 ```
-
-## Author
-
-- Matthias Leutenegger
-
 ## License
 
 This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/licence) file for the full license text.
-
-## Copyright
-
-(c) 2019, Arillso
