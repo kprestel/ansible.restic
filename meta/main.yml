@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: restic
-  author: Matthias Leutenegger
+  author: Kyle Prestel
   description: Role to deploy restic and setup backups.
   # company:
   license: MIT

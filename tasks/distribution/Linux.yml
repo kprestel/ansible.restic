@@ -1,9 +1,9 @@
 ---
 # tasks file for skeleton
 
-- name: reformat dict if necessary
+- name: Reformat dict if necessary
   set_fact:
-    restic_backups: "{{ restic_backups|dict2items|json_query('[*].value') }}"
+    restic_backups: "{{ restic_backups | dict2items | json_query('[*].value') }}"
   when:
     - restic_backups | type_debug == "dict"
 

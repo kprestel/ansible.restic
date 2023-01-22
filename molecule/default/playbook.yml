@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   roles:
-    - role: ansible.restic
+    - role: restic
   pre_tasks:
     - name: install bzip2
       package:
@@ -11,6 +11,8 @@
   vars:
     restic_download_path: ~/restic
     restic_install_path: ~/restic
+    restic_env_vars:
+      - "GOMAXPROCS=4"
     restic_repos:
       local:
         location: /backup
@@ -36,7 +38,7 @@
 - name: Converge with dict
   hosts: all
   roles:
-    - role: ansible.restic
+    - role: restic
   pre_tasks:
     - name: install bzip2
       package:

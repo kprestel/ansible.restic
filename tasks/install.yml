@@ -4,6 +4,7 @@
     url: '{{ restic_url }}'
     dest: '{{ restic_download_path }}/restic.bz2'
     force: true
+    mode: '0755'
   register: get_url_restic
 
 # TODO: This needs to become independent of the shell module to actually work

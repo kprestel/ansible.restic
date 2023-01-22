@@ -1,7 +1,7 @@
 ---
 # tasks file for skeleton
 
-- name: add OS specific variables
+- name: Add OS specific variables
   include_vars: '{{ loop_vars }}'
   with_first_found:
     - files:
@@ -43,13 +43,13 @@
   register: restic_installed
 
 - name: Install restic
-  include: 'install.yml'
+  include_tasks: 'install.yml'
   when: not restic_executable.stat.exists or not restic_installed.stat.exists
 
 - name: Configure restic
-  include: 'configure.yml'
+  include_tasks: 'configure.yml'
 
-- name: include distribution tasks
+- name: Include distribution tasks
   include_tasks: '{{ loop_distribution }}'
   with_first_found:
     - files:
