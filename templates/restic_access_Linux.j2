@@ -3,6 +3,12 @@
 # Backup credentials for {{ item.src|default('stdin') }}
 # Source this file to work with restic on this host
 
+{% if restic_env_vars is defined %}
+  {% for i in restic_env_vars %}
+    export {{ i }}
+  {% endfor %}
+{% endif %}
+
 export RESTIC_REPOSITORY={{ restic_repos[item.repo].location }}
 export RESTIC_PASSWORD='{{ restic_repos[item.repo].password | regex_replace('\'', '\'\\\'\'') }}'
 {% if restic_repos[item.repo].aws_access_key is defined %}

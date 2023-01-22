@@ -86,6 +86,7 @@ ansible-galaxy install arillso.restic
 | `restic_create_cron`            | `false`                                                                                                            | Should a cronjob be created for each backup                                 |
 | `restic_dir_owner`              | `'{{ansible_user}}'`                                                                                               | The owner of all created dirs                                               |
 | `restic_dir_group`              | `'{{ansible_user}}'`                                                                                               | The group of all created dirs                                               |
+| `restic_env_vars`              | `undefined`                                                                                                         | A list of enviornment variables to add to backup and access scripts
 | `restic_backup_script_template` | [`restic_script_Linux.j2`](https://github.com/arillso/ansible.restic/blob/master/templates/restic_script_Linux.j2) | The path to the Jinja template file to use for the backup script            |
 
 ### Repos
@@ -206,6 +207,22 @@ none
 - hosts: all
   roles:
     - restic
+  vars:
+    restic_download_path: ~/restic
+    restic_install_path: ~/restic
+    restic_env_vars:
+      - "GOMAXPROCS=4"
+    restic_repos:
+      local:
+        location: /backup
+        password: securepassword1
+        init: true
+    restic_backups:
+      - name: test
+        src: /home
+        repo: local
+        keep_last: 4
+        keep_tag: deployment
 ```
 
 ## Author

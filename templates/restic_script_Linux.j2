@@ -11,6 +11,12 @@
 {% set forget_result_log, forget_output_log = restic_log_dir + "/" + item.name + "-forget-result.log", restic_log_dir + "/" + item.name + "-forget-output.log" %}
 {% endif %}
 
+{% if restic_env_vars is defined %}
+  {% for i in restic_env_vars %}
+    export {{ i }}
+  {% endfor %}
+{% endif %}
+
 export RESTIC_REPOSITORY={{ restic_repos[item.repo].location }}
 export RESTIC_PASSWORD='{{ restic_repos[item.repo].password | regex_replace('\'', '\'\\\'\'') }}'
 BACKUP_NAME={{ item.name }}

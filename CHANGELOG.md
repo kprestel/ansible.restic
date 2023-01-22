@@ -1,6 +1,6 @@
 <a name="unreleased"></a>
 ## [Unreleased]
-
+- Add `restic_env_vars` to start up and access scripts
 
 <a name="0.3.0"></a>
 ## [0.3.0] - 2021-03-25
